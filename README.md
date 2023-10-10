@@ -1,6 +1,6 @@
 # Ansible Role: PHP
 
-[![CI](https://github.com/shaneholloman-org/ansible-role-php/actions/workflows/ci.yml/badge.svg)](https://github.com/shaneholloman-org/ansible-role-php/actions/workflows/ci.yml)
+[![CI](https://github.com/shaneholloman/ansible-role-php/actions/workflows/ci.yml/badge.svg)](https://github.com/shaneholloman/ansible-role-php/actions/workflows/ci.yml)
 
 Installs PHP on RedHat/CentOS and Debian/Ubuntu servers.
 
@@ -38,7 +38,7 @@ The default values for the HTTP server deamon are `httpd` (used by Apache) for R
 
 (Debian/Ubuntu only) The default version of PHP in the given OS version repositories. The specific version is set per distro and per version, but you can override it by providing a value here, like `"7.4"`.
 
-**If you'd like to be able to switch PHP versions easily, or use a version that's not available in system packages**: You can use the [`shaneholloman.php-versions`](https://galaxy.ansible.com/shaneholloman/php-versions/) role to more easily switch between major PHP versions (e.g. 5.6, 7.1, 7.2).
+**If you'd like to be able to switch PHP versions easily, or use a version that's not available in system packages**: You can use the [`shaneholloman.phps`](https://galaxy.ansible.com/shaneholloman/phps/) role to more easily switch between major PHP versions (e.g. 5.6, 7.1, 7.2).
 
     php_packages_state: "present"
 
@@ -69,8 +69,7 @@ Control over the fpm daemon's state; set these to `stopped` and `false` if you w
 
     php_fpm_handler_state: restarted
 
-The handler restarts PHP-FPM by default. Setting the value to `reloaded` will reload the service, intead of restarting it.
-
+The handler restarts PHP-FPM by default. Setting the value to `reloaded` will reload the service, instead of restarting it.
 
     php_fpm_pools:
       - pool_name: www
@@ -93,7 +92,7 @@ Specific settings inside the default `www.conf.j2` PHP-FPM pool. If you'd like t
 
     php_use_managed_ini: true
 
-By default, all the extra defaults below are applied through the php.ini included with this role. You can self-manage your php.ini file (if you need more flexility in its configuration) by setting this to `false` (in which case all the below variables will be ignored).
+By default, all the extra defaults below are applied through the php.ini included with this role. You can self-manage your php.ini file (if you need more flexibility in it's configuration) by setting this to `false` (in which case all the below variables will be ignored).
 
     php_fpm_pool_user: "[apache|nginx|other]" # default varies by OS
     php_fpm_pool_group: "[apache|nginx|other]" # default varies by OS
@@ -160,7 +159,7 @@ Whether to enable APCu. Other APCu variables will be ineffective if this is set 
     php_apc_shm_size: "96M"
     php_apc_enable_cli: "0"
 
-APCu ini directives that are often customized on a system. Set the `php_apc_shm_size` so it will hold all cache entries in memory with a little overhead (fragmentation or APC running out of memory will slow down PHP *dramatically*).
+APCu ini directives that are often customized on a system. Set the `php_apc_shm_size` so it will hold all cache entries in memory with a little overhead (fragmentation or APC running out of memory will slow down PHP _dramatically_).
 
     php_apc_conf_filename: [platform-specific]
 
@@ -170,14 +169,14 @@ The platform-specific APC configuration filename. Generally the default should w
 
 If you use APC, you will need to make sure APC is installed (it is installed by default, but if you customize the `php_packages` list, you need to include APC in the list):
 
-  - *On RHEL/CentOS systems*: Make sure `php-pecl-apcu` is in the list of `php_packages`.
-  - *On Debian/Ubuntu systems*: Make sure `php-apcu` is in the list of `php_packages`.
+  - _On RHEL/CentOS systems_: Make sure `php-pecl-apcu` is in the list of `php_packages`.
+  - _On Debian/Ubuntu systems_: Make sure `php-apcu` is in the list of `php_packages`.
 
 ### Installing from Source
 
 If you need a specific version of PHP, or would like to test the latest (e.g. master) version of PHP, there's a good chance there's no suitable package already available in your platform's package manager. In these cases, you may choose to install PHP from source by compiling it directly.
 
-Note that source compilation takes *much* longer than installing from packages (PHP HEAD takes 5+ minutes to compile on a modern quad-core computer, just as a point of reference).
+Note that source compilation takes _much_ longer than installing from packages (PHP HEAD takes 5+ minutes to compile on a modern quad-core computer, just as a point of reference).
 
     php_install_from_source: false
 
@@ -246,4 +245,3 @@ MIT / BSD
 ## Author Information
 
 This role was created in 2023
-

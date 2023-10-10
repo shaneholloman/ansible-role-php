@@ -1,3 +1,5 @@
 ---
-- src: shaneholloman.remi
-- src: shaneholloman.git
+- name: shaneholloman.remi
+  src: https://github.com/shaneholloman/ansible-role-remi
+- name: shaneholloman.git
+  src: https://github.com/shaneholloman/ansible-role-git
