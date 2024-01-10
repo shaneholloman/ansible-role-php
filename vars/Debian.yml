@@ -17,7 +17,7 @@ __php_packages:
 
 __php_webserver_daemon: "apache2"
 
-# Vendor-specific configuration paths on Debian/Ubuntu make my brain asplode.
+# Vendor-specific configuration paths on Debian/Ubuntu make my brain explode.
 __php_conf_paths:
   - /etc/php/{{ php_default_version_debian }}/fpm
   - /etc/php/{{ php_default_version_debian }}/apache2
